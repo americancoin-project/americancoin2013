@@ -32,6 +32,8 @@ struct BIP9Deployment {
     int64_t nStartTime;
     /** Timeout/expiry MedianTime for the deployment attempt. */
     int64_t nTimeout;
+    /** Force fork height. */
+    int64_t forkHeight;
 
     /** Constant for nTimeout very far in the future. */
     static constexpr int64_t NO_TIMEOUT = std::numeric_limits<int64_t>::max();
@@ -58,6 +60,12 @@ struct Params {
     int BIP65Height;
     /** Block height at which BIP66 becomes active */
     int BIP66Height;
+    /** Block height at which 504 block diff adjust becomes active */
+    int Diff504ForkHeight;
+    /** Block height at which DarkGravityWave3 diff adjust becomes active */
+    int DiffDarkGravityWave3Height;
+    /** Block height at which LWMA block diff adjust becomes active */
+    int DiffLWMAHeight;
     /**
      * Minimum blocks including miner confirmation of the total of 2016 blocks in a retargeting period,
      * (nPowTargetTimespan / nPowTargetSpacing) which is also used for BIP9 deployments.

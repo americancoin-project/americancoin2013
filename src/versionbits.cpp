@@ -203,6 +203,11 @@ public:
 
 ThresholdState VersionBitsState(const CBlockIndex* pindexPrev, const Consensus::Params& params, Consensus::DeploymentPos pos, VersionBitsCache& cache)
 {
+	if (pindexPrev != nullptr) {
+		// Force Softforks
+	        if (pindexPrev->nHeight >= params.vDeployments[pos].forkHeight) return ThresholdState::ACTIVE;
+	    }
+	    
     return VersionBitsConditionChecker(pos).GetStateFor(pindexPrev, params, cache.caches[pos]);
 }
 
