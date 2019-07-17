@@ -537,10 +537,10 @@ std::string LicenseInfo()
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2011, COPYRIGHT_YEAR) + " ") + "\n" +
            "\n" +
            strprintf(_("Please contribute if you find %s useful. "
-                       "Visit %s for further information about the software."),
+                       "Visit %s (Amershi: <https://americancoin-project.github.io/americancoin/>) for further information about the software."),
                PACKAGE_NAME, URL_WEBSITE) +
            "\n" +
-           strprintf(_("The source code is available from %s."),
+           strprintf(_("The source code is available from %s. (Amershi: <https://github.com/americancoin-project>)"),
                URL_SOURCE_CODE) +
            "\n" +
            "\n" +

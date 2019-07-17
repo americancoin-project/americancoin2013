@@ -44,7 +44,7 @@
 #include <QUrlQuery>
 
 const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("litecoin:");
+const QString BITCOIN_IPC_PREFIX("americancoin:");
 // BIP70 payment protocol messages
 const char* BIP70_MESSAGE_PAYMENTACK = "PaymentACK";
 const char* BIP70_MESSAGE_PAYMENTREQUEST = "PaymentRequest";
@@ -315,7 +315,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) :
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
             QMessageBox::critical(0, tr("Payment request error"),
-                tr("Cannot start litecoin: click-to-pay handler"));
+                tr("Cannot start americancoin: click-to-pay handler"));
         }
         else {
             connect(uriServer, SIGNAL(newConnection()), this, SLOT(handleURIConnection()));
@@ -395,9 +395,9 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith("litecoin://", Qt::CaseInsensitive))
+    if (s.startsWith("americancoin://", Qt::CaseInsensitive))
     {
-        Q_EMIT message(tr("URI handling"), tr("'litecoin://' is not a valid URI. Use 'litecoin:' instead."),
+        Q_EMIT message(tr("URI handling"), tr("'americancoin://' is not a valid URI. Use 'americancoin:' instead."),
             CClientUIInterface::MSG_ERROR);
     }
     else if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // bitcoin: URI
